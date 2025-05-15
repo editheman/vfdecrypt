@@ -6,8 +6,6 @@ Decrypting root filesystem images requires the decryption key. This is provided 
 
 There are several VFDecrypt builds available on the Internet. We've used and updated the implementation [here](https://github.com/trailofbits/iverify-oss/tree/master/vendor/vfdecrypt). We've updated `vfdecrypt.c` to support OpenSSL >= 1.1.0 and the `Makefile` to be OS-dependent.
 
-You can build and run `lzssdec` on macOS and on Linux.
-
 You build `vfdecrypt` using
 
 ```
@@ -21,3 +19,9 @@ You runn `vfdecrypt` by passing it the root filesystem key, the root filesystem 
 ```
 
 iExtractor runs `vfdecrypt` as part of the `bin/decrypt_fs` and `scripts/decrypt_fs` scripts.
+
+The usage inside iExtractor:
+
+```
+docker run -v "<input_absolute_path>":/in -v "<output_absolute_path>":/out -t ghcr.io/malus-security/vfdecrypt:latest -k<rootfs_key> /in /out > /dev/null 2>&1
+```
