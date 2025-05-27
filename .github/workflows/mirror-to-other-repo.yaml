@@ -1,0 +1,29 @@
+name: Mirror to another repo
+
+on:
+  push:
+    branches:
+      - '**'     # any branch
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Pull down your source (full history)
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # 2. Add the target repository
+      - name: Add target remote
+        run: |
+          git remote add target "https://${{ secrets.GITLAB_ACCESS_TOKEN }}@gitlab.com/malus-security/vfdecrypt.git"
+
+      # 3. Push branches and tags (without remote tracking refs)
+      - name: Push to target
+        run: |
+          # Push all local branches with force
+          git push --force target "refs/heads/*:refs/heads/*"
+          
+          # Push all tags
+          git push --force target "refs/tags/*:refs/tags/*"
