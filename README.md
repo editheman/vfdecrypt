@@ -1,10 +1,15 @@
 # VFDecrypt
 
-[VFDecrypt](https://www.theiphonewiki.com/wiki/VFDecrypt) is used to decrypt Apple iOS root filesystem images. Root filesystem images inside IPSW files are encrypted for iOS >= 9. Since iOS 10, root filesystem images are not encrypted and VFDecrypt is no longer required.
+[VFDecrypt](https://www.theiphonewiki.com/wiki/VFDecrypt) is used to decrypt Apple iOS root filesystem images.
+Root filesystem images inside IPSW files are encrypted for iOS >= 9.
+Since iOS 10, root filesystem images are not encrypted and VFDecrypt is no longer required.
 
-Decrypting root filesystem images requires the decryption key. This is provided for most root filesystem images version by the community at [The iPhone Wiki](https://www.theiphonewiki.com/wiki/Firmware_Keys).
+Decrypting root filesystem images requires the decryption key.
+This is provided for most root filesystem images version by the community at [The iPhone Wiki](https://www.theiphonewiki.com/wiki/Firmware_Keys).
 
-There are several VFDecrypt builds available on the Internet. We've used and updated the implementation [here](https://github.com/trailofbits/iverify-oss/tree/master/vendor/vfdecrypt). We've updated `vfdecrypt.c` to support OpenSSL >= 1.1.0 and the `Makefile` to be OS-dependent.
+There are several VFDecrypt builds available on the internet.
+We've used and updated the implementation [here](https://github.com/trailofbits/iverify-oss/tree/master/vendor/vfdecrypt).
+We've updated `vfdecrypt.c` to support OpenSSL >= 1.1.0 and the `Makefile` to be OS-dependent.
 
 You build `vfdecrypt` using
 
